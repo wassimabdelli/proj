@@ -1,0 +1,38 @@
+<app-navbar [email]="email"></app-navbar>
+<h2 style="text-align: center;"> Ajouter un BL </h2>
+<div class="container">
+<form  #commandeForm="ngForm">
+    <div class="form-group">
+        <label for="task">Numero du BL </label>
+        <input type="text" class="form-control"  id="NumBL" placeholder="Numero du BL"  name="NumBL"  [(ngModel)] = "NumBL" disabled>
+        <br>
+        <label for="task">Numero de la bande de commande :</label>
+        <input type="text" class="form-control"  id="NumC" placeholder="Numero de bande de commande"  name="numC"  [(ngModel)] = "NumC">
+        <br>
+        <label for="task">Client : </label>
+        <input type="text" class="form-control"  id="client" placeholder="Nom du client"  name="client"  [(ngModel)] = "client">
+        <br>
+        <button [disabled]="commandeForm.invalid"   id="submitButton" type="submit" class="btn btn-primary" (click)="addBLA()">Ajouter BL</button>
+    </div>
+</form>
+
+
+
+<hr>
+
+          
+<h3> Ajouter Des articles a votre BL </h3>
+    <hr>
+    <form  #articleForm="ngForm">
+        <div class="form-group">
+            <label for="task">Numero du BL </label>
+            <input type="text" class="form-control"  id="NumBL" placeholder="Numero du BL"  name="NumBL"  [(ngModel)] = "NumBL" disabled    >
+            <br>
+            <label for="task">Nom de l'article : </label>
+            <input type="text" class="form-control"  id="nomAR" placeholder="Nom de l'article"  name="nomAR"  [(ngModel)] = "nomAR">
+            <br>
+            <label for="task">Quantité : :</label>
+            <input type="number" class="form-control"  id="Qte" placeholder="Qte"  name="Qte"  [(ngModel)] = "Qte"> 
+            <br>
+            <button [disabled]="commandeForm.invalid"   id="submitButton" type="submit" class="btn btn-primary" (click)="addArticleBL()">Ajouter Article</button>
+</div>

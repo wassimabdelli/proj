@@ -1,0 +1,29 @@
+<app-navbar [email]="email"></app-navbar>
+<div class="container">
+
+    <h1> Voulez-vous Supprimer le cheque N°{{IDC}} ? </h1> 
+    
+    <form  #taskForm="ngForm">
+        <div class="form-group">
+
+            <label for="nameTask">Designation</label>
+            <input type="text" class="form-control"  ngModel name="des"  [(ngModel)] = des  disabled = true  >
+
+            <label for="nameTask">Date</label>
+            <input type="date" class="form-control"  ngModel name="date"  [(ngModel)] = date  disabled = true  >
+
+            <label for="nameTask">Montant</label>
+            <input type="text" class="form-control"  ngModel name="M"  [(ngModel)] = M  disabled = true  >
+
+            <label for="nameTask">Numero du facture</label>
+            <input type="text" class="form-control"  ngModel name="NF"  [(ngModel)] = NF  disabled = true  >
+
+            <label for="nameTask">Verssement</label>
+            <input type="text" class="form-control"  ngModel name="rq"  [(ngModel)] = rq  disabled = true  >
+
+        </div>
+        <br>
+        <button [disabled]="taskForm.invalid" id="submitButton" type="submit" class="btn btn-danger" (click)="delete(IDC)" >Supprimer</button>
+        </form>
+        </div>
+        <br>

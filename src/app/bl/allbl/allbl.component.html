@@ -1,0 +1,37 @@
+<app-navbar [email]="email"></app-navbar>
+<div class="container" >
+
+    Chercher en : <select [(ngModel)]="selectedYear" (change)="onYearChange()" >
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select><br> <br>
+      Facturation {{selectedYear}} :
+    <table>
+        <thead>
+            <tr>
+                <td> Numéro BL </td>
+                <td> Numéro bon de commande </td>
+                <td> Date </td>
+                <td> Voir </td>
+                <td> Modifier </td>
+                <td> Supprimer </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="BLs?.length === 0">
+                <td colspan="7" class="exception" > <p> pas de donneés </p></td> </tr>
+            <tr *ngFor = "let f of BLs ; index as i" >
+                <td> {{f.NumBL}} </td>
+                <td> {{f.NumC}} </td>
+                <td>{{f.date.toDate() | date:('dd/MM/yyyy')}}</td>
+                <td> <button class="btn btn-success" type="button" (click)="seeBL(f.NumC)">Voir</button>
+                <td> <button class="btn btn-warning" type="button"(click)="update(f.NumBL , f.date.toDate())">Update</button> </td>
+                <td> <button class="btn btn-danger" (click)="delete(f.NumC)" >Delete</button> </td>
+            </tr>
+        </tbody>
+    </table>
+    
+      <br>  
+<button class="btn btn-info" (click)="toAddBl()" > Ajouter Un BL Personalisé </button>
+
+
+</div>

@@ -1,0 +1,23 @@
+<div class="container" >
+  <form action="/login" method="post">
+  <h2 >Se connecter</h2>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" id="email" name="email" class="form-control"  [(ngModel)] = "email">
+  </div>
+  <br>
+  <div class="mb-3">
+    <label for="password" class="form-label">Mot de passe</label>
+    <input type="password" id="password" name="password" class="form-control" [(ngModel)] = "password">
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary" (click)="login()" >Se connecter</button>
+  <a href="/register" >Pas encore inscrit ? Inscrivez-vous !</a>  <a (click)="verif($event)" >Mot de passe oblié ? envoyer le mot de passe via email ?</a>
+  <div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</form>
+</div>
+
+
+

@@ -1,0 +1,86 @@
+
+<div class="container"  >
+
+
+ <div class="guache">
+  <h1>IBM  <h5> Informatique Bureautique Moderne<h5>الإعلامية و الإدارية الحديثة</h5></h5> </h1>
+ 
+</div>
+
+    <div class="Con" >
+       Adresse : {{adr}} <br>
+        Matricule Fiscal : {{codeTVA}}<br>
+        Tel/Fax : {{GSM}}<br>
+        Email : {{EIBM}}<br>
+        RIB : {{RIB}}
+    </div> 
+  
+<h2 style="text-align: left;">Facture</h2>
+     <div style="padding-bottom: 0.5cm;" >
+        Numero N° : {{fullNumF}} <br>
+        Date : {{mydate}} <br>
+        Client : {{client}}<br>
+        Bon de Commande : {{ NumC }}<br>
+        Bon de Livraison :
+        {{ NumBL === 0 ? '' : fullNumBL }} <br>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>N°</th>
+        <th>DESIGNATION</th>
+        <th>Qte</th>
+        <th>PUHT</th>
+        <th>PTHT</th>
+        <th>TVA</th>
+        <th>PUTTC</th>
+        <th>PTTTC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of Articles ; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ c.LibA }}</td>
+        <td>{{ c.Qte }}</td>
+        <td>{{ (c.PrixUn).toFixed(3) }}</td>
+        <td>{{ (c.PrixUn * c.Qte).toFixed(3) }}</td>
+        <td>{{ c.TVA }}%</td>
+        <td>{{ ((c.PrixUn) * (1 + (c.TVA / 100))).toFixed(3) }}</td>
+        <td>
+          {{ ((c.PrixUn * c.Qte) * (1 + (c.TVA / 100))).toFixed(3) }}
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="7" style="text-align: right;">TOTAL T.HT :</td>
+        <td>{{ (THT).toFixed(3) }}</td>
+      </tr>
+      <tr>
+        <td colspan="7" style="text-align: right;">TVA 7 :</td>
+        <td>{{ (TVA7).toFixed(3) }}</td>
+      </tr>
+      <tr>
+        <td colspan="7" style="text-align: right;">TVA 19 :</td>
+        <td>{{ (TVA19).toFixed(3) }}</td>
+      </tr>
+      <tr>
+        <td colspan="7" style="text-align: right;">TVA Totale :</td>
+        <td>{{ (TVA19 + TVA7).toFixed(3) }}</td>
+      </tr>
+      <tr>
+        <td colspan="7" style="text-align: right;">Totale TTC :</td>
+        <td>{{ (TVA19 + TVA7 + THT  ).toFixed(3) }}</td>
+      </tr>
+    </tfoot>
+  </table>
+  <br>
+  Arretée la présente facture à la somme de : <br>
+  <input type="text" placeholder=" Montant en lettres " >
+</div>
+
+<br>
+<br>
+<br>
+<footer></footer>
+  

@@ -1,0 +1,39 @@
+<app-navbar [email]="email"></app-navbar>
+<div class="container">
+    <h2> Etat des Facture non réglée : </h2>
+
+     Filtrage : <select [(ngModel)]="selectedF" (change)="Filtrer()">
+        <option *ngFor="let month of F" value="{{month}}">{{month}}</option>
+      </select>
+    <table >
+   
+        <thead>
+            <tr>
+                <td> Numéro Facture </td>
+                <td> Date </td>
+                <td> Client </td>
+                <td> PT.HT </td>
+                <td> TVA </td>
+                <td> Timbre </td>
+                <td> Total TTC </td>
+                <td> Reglement </td> 
+                <td> Changer l'etet de réglement </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="NR?.length === 0">
+                <td colspan="9" class="exception" > <p> pas de donneés </p></td> </tr>
+            <tr *ngFor = "let f of NR ; index as i" >
+                <td> {{f.NumF}}/2024 </td>
+                <td>{{f.dateF.toDate() | date:('dd/MM/yyyy')}}</td>
+                <td> {{f.client}} </td>
+                <td> {{f.PTHT}} </td>
+                <td> {{ f.MTVA }} </td>
+                <td> {{f.timbre}} </td>
+                <td> {{ f.MTTC }} </td>
+                <td> {{ f.Reg ? 'Payée' : 'Non Payée' }} </td>
+                <td> <button type="button" class="btn btn-light" (click)="changer(f.NumF , f.Reg)" >Changer</button> </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

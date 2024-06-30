@@ -1,0 +1,25 @@
+<app-navbar [email]="email"></app-navbar>
+<br>
+<div class="container" >
+<h2> Facture en cours de livraison  </h2>
+<table >
+    <thead>
+        <tr>
+            <td> Numéro Facture </td>
+            <td> Numéro bon de commande </td>
+            <td> Total TTC </td>
+            <td> Ajouter a l'etat des ventes </td> 
+            <td> suppression </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let f of FEL ; index as i" >
+            <td>{{f.NumF}}</td>
+            <td>{{f.NumC}}</td>
+            <td>{{f.MTTC}}</td>
+            <td> <button class="btn btn-success" type="button" (click)="add(f.NumC,f.NumF,f.MTTC)" >Ajouter </button> </td>
+            <td> <button class="btn btn-danger" type="button" (click)="delete(f.NumC)"> Supprimer </button> </td>
+        </tr>
+    </tbody>
+</table>
+

@@ -1,0 +1,43 @@
+<app-navbar [email]="email"></app-navbar>
+<div class="container">
+    <h1> Ajouter une nouvelle commande  </h1>
+    <hr>
+    <form  #commandeForm="ngForm">
+        <div class="form-group">
+            <label for="task">Numero de la bande de commande :</label>
+            <input type="text" class="form-control"  id="NumC" placeholder="Numero de bande de commande"  name="numC"  [(ngModel)] = "NumC">
+            <br>
+            <label for="task">Client : </label>
+            <input type="text" class="form-control"  id="client" placeholder="Numero de bande de commande"  name="client"  [(ngModel)] = "client">
+            <br>
+            <button [disabled]="commandeForm.invalid" (click)="addCommande()"  id="submitButton" type="submit" class="btn btn-primary">Ajouter la commande</button>
+        </div>
+    </form>
+
+<hr>
+
+          
+<h3> Ajouter Des articles a votre commande </h3>
+    <hr>
+    <form  #articleForm="ngForm">
+        <div class="form-group">
+            <label for="task">Numero de la bande de commande :</label>
+            <input type="text" class="form-control"  id="NumC" placeholder="Numero de bande de commande"  name="numC"  [(ngModel)] = "NumC" disabled>
+            <br>
+            <label for="task">Nom de l'article : </label>
+            <input type="text" class="form-control"  id="LibA" placeholder="Nom de l'article"  name="LibA"  [(ngModel)] = "LibA">
+            <br>
+            <label for="task">Prix Unitaire de l'article :</label>
+            <input type="number" class="form-control"  id="PA" placeholder="Prix Unitaire de l'article"  name="PA"  [(ngModel)] = "PA">
+            <br>
+            <label for="task">TVA :</label>
+            <input type="number" class="form-control"  id="TVA" placeholder="TVA"  name="TVA"  [(ngModel)] = "TVA">
+            <br>
+            <label for="task">Quantité : :</label>
+            <input type="number" class="form-control"  id="QTE" placeholder="QTE"  name="QTE"  [(ngModel)] = "QTE"> 
+            <br>
+            <button [disabled]="articleForm.invalid" id="submitButton" type="submit" (click)="addTask()" class="btn btn-primary">Ajouter l'article</button>
+        
+<br>
+
+</div>

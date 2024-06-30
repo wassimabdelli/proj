@@ -1,0 +1,76 @@
+body {
+  font-family: Arial, sans-serif; /* Clean and modern font */
+  margin: 0; /* Remove default margin */
+  padding: 20px; /* Add some breathing room */
+  background-color: #f5f5f5; /* Light background for better readability */
+}
+
+h1, h3 {
+  text-align: center; /* Center headings for a balanced layout */
+  margin-bottom: 20px; /* Add space after headings */
+}
+
+hr {
+  border: 0; /* Remove default border */
+  height: 1px; /* Set a thin line for separation */
+  background-color: #ddd; /* Light gray for subtle division */
+}
+
+/* Form Styles */
+form {
+  display: flex; /* Arrange forms horizontally */
+  flex-direction: column; /* Stack fields vertically */
+  width: 100%; /* Take full width of container */
+  margin-bottom: 30px; /* Add space between forms */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+label {
+  margin-bottom: 5px; /* Add space after labels */
+  font-weight: bold; /* Emphasize labels */
+}
+
+.form-control {
+  border: 1px solid #ddd; /* Light border for input fields */
+  border-radius: 4px; /* Rounded corners for a softer look */
+  padding: 8px; /* Add padding for better user interaction */
+}
+
+.form-control:focus {
+  border-color: #999; /* Highlight input field on focus */
+}
+
+#submitButton {
+  background-color: #3498db; /* Blue button for primary action */
+  color: white; /* White text for contrast */
+  border: none; /* Remove default button border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 20px; /* Add sufficient padding */
+  font-weight: bold; /* Emphasize button text */
+  cursor: pointer; /* Indicate clickable behavior */
+  margin-top: 10px; /* Add space after form fields */
+  transition: background-color 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+#submitButton:hover {
+  background-color: #2980b9; /* Darken button on hover */
+}
+
+/* Additional Styling (Optional) */
+.container {
+  border: 1px solid #eee; /* Optional border around container */
+  border-radius: 4px; /* Rounded corners for container */
+  padding: 20px; /* Add padding inside container */
+  max-width: 800px; /* Set a maximum width for responsiveness */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+#articleForm .form-control[disabled] {
+  background-color: #eee; /* Gray out disabled field */
+  cursor: not-allowed; /* Indicate disabled state visually */
+}

@@ -1,0 +1,52 @@
+
+<app-navbar [email]="email"></app-navbar>
+<div class="container" > 
+    <h3>Chercher :</h3> 
+Type de recherche : <select [(ngModel)]="selectedTR" (change)="onYearChange01()" >
+    <option *ngFor="let tr of TR" value="{{tr}}">{{tr}}</option>
+  </select> <br><br>
+
+ Année : <select [(ngModel)]="selectedYear" (change)="onYearChange()">
+    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+  </select><br> <br>
+ Mois : <select [(ngModel)]="selectedMonth" (change)="onYearChange01()">
+    <option *ngFor="let month of months" value="{{month}}">{{month}}</option>
+  </select>
+<table >
+    <thead>
+        <tr>
+            <td> Numéro Facture </td>
+            <td> Date </td>
+            <td> Client </td>
+            <td> Timbre </td>
+            <td> PT.HT </td>
+            <td> TVA </td>
+            <td> Total TTC </td>
+            <td> Suppression </td>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="Ventes2?.length === 0">
+            <td colspan="8" class="exception" > <p> pas de donneés </p></td>
+         </tr>
+        <tr *ngFor = "let f of Ventes2 ; index as i" >
+            <td> {{f.NumF}}/2024 </td>
+            <td>{{f.dateF.toDate() | date:('dd/MM/yyyy')}}</td>
+            <td> {{f.client}} </td>
+            <td> {{f.timbre}} </td>
+            <td> {{f.PTHT}} </td>
+            <td> {{ f.MTVA }} </td>
+            <td> {{ f.MTTC }} </td>
+            <td> <button class="btn btn-danger" type="button" > Supprimer </button> </td>
+        </tr>
+        <tr  >
+            <td colspan="4"> Totale </td> 
+            <td > {{sumArray(THTPM)}} </td>
+            <td > {{sumArray(TVTPM)}} </td>
+            <td >   {{ sumArray(VTPM) }} </td>
+            <td style="background-color: black;" ></td>
+        </tr>
+    </tbody>
+</table>
+</div>

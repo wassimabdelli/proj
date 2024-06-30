@@ -1,0 +1,101 @@
+<app-navbar [email]="email"></app-navbar>
+<div class="container">
+    <h1> Ajouter Facture : <h6> afficher le formulaire d'ajout ? <br> 
+        <input type="radio" id="oui" name="reponse" value="oui" [(ngModel)]="selectedValue">
+        <label for="oui">Oui</label><br>
+      
+        <input type="radio" id="non" name="reponse" value="non" [(ngModel)]="selectedValue">
+        <label for="non">Non</label> </h6>  </h1>
+    <br>
+    <div *ngIf="selectedValue === 'oui'">
+        <form  #chequeForm="ngForm">
+            <div class="form-group">
+    
+                <label for="task">N° Facture : </label>
+                <input type="text" class="form-control"  id="NF" placeholder="Numero facture" name="NF"  [(ngModel)] = "NF">
+                <br>
+    
+                <label for="task">Client : </label>
+                <input type="text" class="form-control"  id="client" placeholder="client"  name="client"  [(ngModel)] = "client">
+                <br>
+    
+                <label for="task">Date : </label>
+                <input type="date" class="form-control"  id="dateFact" name="dateFact"  [(ngModel)] = "dateFact">
+                <br>
+    
+                <label for="task">PTHT : </label>
+                <input type="number" class="form-control"  id="PTHT" placeholder="PTHT" name="PTHT"  [(ngModel)] = "PTHT">
+                <br>
+    
+                <label for="task">TVA : </label>
+                <input type="number" class="form-control"  id="TVA" placeholder="TVA" name="TVA"  [(ngModel)] = "TVA">
+                <br>
+
+                
+                <label for="task">timbre : </label>
+                <input type="number" class="form-control"  id="timbre" placeholder="timbre" name="timbre"  [(ngModel)] = "timbre">
+                <br>
+
+                <label for="task">TTC: </label>
+                <input type="number" class="form-control"  id="TTC" placeholder="TTC" name="TTC"  [(ngModel)] = "TTC">
+                <br>
+
+                <button [disabled]="chequeForm.invalid" id="submitButton" type="submit" (click)="addAchat()" class="btn btn-primary">Ajouter Facture</button>
+            </div>
+        </form>
+        </div> 
+        <h2> Achats </h2>
+        Filtrage : <select [(ngModel)]="selectedF" >
+            <option *ngFor="let f of F" value="{{f}}" >{{f}}</option>
+          </select> <br> <br>
+          Année : <select [(ngModel)]="selectedYear" >
+            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+          </select><br> <br>
+         Mois : <select [(ngModel)]="selectedMonth" >
+            <option *ngFor="let month of months" value="{{month}}">{{month}}</option>
+          </select>
+        <br>
+        <table >
+            <thead>
+                <tr>
+                    <td colspan="8" align="center">
+                      <ng-container *ngIf="selectedF === 'Par Mois'">
+                        Frais {{selectedMonth}} {{selectedYear}}
+                      </ng-container>
+                      <ng-container *ngIf="selectedF === 'Toutes l\'année'">
+                        Les Achats de toutes L'année {{selectedYear}}
+                      </ng-container>
+                    </td>
+                  </tr>
+                <tr>
+                    <td> N° Facture </td>
+                    <td> Designation </td>
+                    <td> Date </td>
+                    <td> PTHT </td>
+                    <td> TVA </td>
+                    <td> Timbre </td>
+                    <td> TTC </td>
+                    <td> Modifier </td>
+                    <td> Supprimer </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="Achats?.length === 0">
+                    <td colspan="6" class="exception" > <p> pas de donneés </p></td> </tr>
+                <tr *ngFor = "let f of Achats ; index as i" >
+                    <td> {{f.NF}} </td>
+                    <td> {{f.Designation}} </td>
+                    <td>{{f.date.toDate() | date:('dd/MM/yyyy')}}</td>
+                    <td> {{f.PTHT}} </td>
+                    <td> {{f.TVA}} </td>
+                    <td> {{f.timbre}} </td>
+                    <td> {{f.TTC}} </td>
+                    <td> <button class="btn btn-warning" type="button">Update</button> </td>
+                    <td> <button class="btn btn-danger" >Delete</button> </td>
+                </tr>
+            </tbody>
+        </table>
+    <br>
+    
+
+</div>

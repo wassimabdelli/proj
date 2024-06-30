@@ -1,0 +1,45 @@
+
+<app-navbar></app-navbar>
+<div class="container" >
+<form >
+  <h2> Inscription </h2>
+  <label for="Image" class="form-label"> Image de Profile </label> <br>    
+  <div class="uk-inline">
+
+    <img class="uk-border-pill" *ngIf="selectedFile" [src]="selectedFile"  width="200" height="200" alt="Photo choisie" >
+    <img class="uk-border-pill" *ngIf="!selectedFile" src="assets/images/avatar.png"  width="200" height="200" alt="Image par défaut" >
+    </div>
+<input type="file" (change)="upload($event)"  > 
+
+<div class="mb-3">
+  <label for="nom" class="form-label">Nom</label>
+  <input type="text" name="nom"  class="form-control" [(ngModel)] = "nom">
+</div>
+
+<div class="mb-3">
+  <label for="prenom" class="form-label">Prénom</label>
+  <input type="text" name="prenom" class="form-control" [(ngModel)] = "prenom">
+</div>
+
+    <div class="mb-3">
+      <label for="tel" class="form-label">Numero de Telephone </label>
+      <input type="number" name="tel" class="form-control" [(ngModel)] = "tel">
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" name="email"  class="form-control" [(ngModel)] = "email">
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Mot de passe</label>
+      <input type="password" name="password" class="form-control" [(ngModel)] = "password">
+    </div>
+
+    <div id="element-to-animate"> </div>
+<button type="submit" class="btn btn-primary" (click)="register()">Envoyer</button> <br>
+     <a href="/login">avez-vous deja un compte ? Se connecter !</a>
+  </form>
+
+
+</div>

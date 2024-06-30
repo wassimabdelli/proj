@@ -1,0 +1,116 @@
+/* Styles de base */
+body {
+    font-family: sans-serif; /* Police par défaut */
+  }
+  
+  .container {
+    width: 100%;
+    height: 100vh;
+   
+    align-items: center;
+    justify-content: center;
+    padding-top: 3%;
+    padding-bottom: 5%;
+  }
+  
+  /* En-tête */
+  header {
+    background-color: #1a009b;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin: 0;
+  }
+  
+  .gauche, .droite {
+    font-size: 1.5em;
+    margin: 0;
+  }
+  
+  .droite {
+    text-align: right;
+  }
+  
+  .gauche {
+    text-align: left;
+  }
+  
+  /* Facture */
+  .facture {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table {
+    width: 90%;
+    margin-top: 1.5cm;
+  }
+  
+  /* En-têtes de tableau */
+  th {
+    padding: 10px 15px;
+    text-align: left;
+    font-weight: bold;
+    border: 1px solid #ddd; /* Bordure claire */
+  }
+  
+  /* Données du tableau */
+  td {
+    padding: 10px 15px;
+    border: 1px solid #ddd; /* Bordure claire */
+  }
+  
+  /* Lignes alternées */
+  .table-striped tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Pied de page */
+  footer {
+    /* Propriétés générales */
+    margin:  auto;
+    padding: 10px;
+    text-align: center;
+    width: 80%;
+    background-color: #ffffff;
+    /* Police */
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    color: #666;
+    margin-block-end: 1px;
+  }
+  
+  /* Styles pour impression */
+  
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  
+    .container {
+      height: auto; /* Permet à la table de s'étendre verticalement */
+      padding: 0;
+     
+    }
+  
+    table {
+      width: 95%; /* Garantit que la table tient sur la largeur de la page */
+      margin-top: 0; /* Supprime la marge inutile */
+    }
+  
+    .mydate {
+      padding-left: 75%; /* Supprime le padding gauche */
+    }
+  
+    .sig {
+      padding-left:   65%; /* Supprime le padding gauche */
+      margin-top: 1cm; /* Ajuste la marge pour la section signature */
+      margin-bottom: 5cm; /* Ajuste la marge pour la section signature */
+    }
+  
+  
+  

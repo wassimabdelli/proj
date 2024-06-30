@@ -1,0 +1,20 @@
+<div class="container">
+
+    <h1> Changer la commande N° {{NumC}} </h1> 
+    
+    <form  #taskForm="ngForm">
+        <div class="form-group">
+    
+            <label for="cleint">Nom du client:</label>
+            <input type="string" class="form-control"  ngModel name="client"  [(ngModel)] = client>
+
+            <label for="timbre">Timbre:</label>
+            <input type="number" class="form-control"  ngModel name="timbre"  [(ngModel)] = timbre>
+
+            <label for="nameTask">Date:</label>
+                <input type="date" class="form-control"  ngModel name="date"  [(ngModel)] = date>
+        </div>
+        <br>
+        <button [disabled]="taskForm.invalid" (click)="update()"  id="submitButton" type="submit" class="btn btn-primary">Modifier</button>
+        </form>
+        </div>

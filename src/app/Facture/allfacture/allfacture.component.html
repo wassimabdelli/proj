@@ -1,0 +1,76 @@
+<app-navbar [email]="email"></app-navbar>
+<br>
+<div class="container" >
+
+    Chercher en : <select [(ngModel)]="selectedYear" (change)="onYearChange()">
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select><br> <br>
+
+Facturation {{selectedYear}} :
+
+<table >
+    <thead>
+        <tr>
+            <td> Numéro Facture </td>
+            <td> Numéro bon de commande </td>
+            <td> Date </td>
+            <td> Bon de Livraison </td>
+            <td> Voir </td>
+            <td> Debut de la livraison </td>
+            <td> Modifier </td>
+            <td> Supprimer </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="facts?.length === 0">
+            <td colspan="7" class="exception" > <p> pas de donneés </p></td> </tr>
+        <tr *ngFor = "let f of facts ; index as i" >
+            <td> {{f.NumF}} </td>
+            <td> {{f.NumC}} </td>
+            <td>{{f.date.toDate() | date:('dd/MM/yyyy')}}</td>
+            <td> <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#BLmodal" (click)="AjouterBL(f.NumC,f.NumF)" >Ajouter BL</button>
+            <td> <button class="btn btn-success" type="button" (click)="seeFact(f.NumC)">Voir</button>
+            <td> <button class="btn btn-secondary" type="button"(click)="livraison(f.NumC , f.NumF )">Livraison</button>
+            <td> <button class="btn btn-warning" type="button"(click)="toupdate(f.date.toDate() , f.NumF)">Update</button> </td>
+            <td> <button class="btn btn-danger" (click)="delete(f.NumC , f.NumF )" >Delete</button> </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="BLmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Alert</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <ng-template #notOkTemplate>
+                Cette Facture n'a pas encore du BL .  
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click) ="BLGlobal()"> Ajouter BL Global </button>
+                    <button type="button" class="btn btn-primary"> Ajouter BL Personalisée </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+              </ng-template>
+        </div>
+        <span *ngIf="ok; else notOkTemplate"> Cette Facture a deja un BL . 
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary"> Ajouter BL Global </button>
+            <button type="button" class="btn btn-primary"> Ajouter BL Personalisée </button>
+            <button type="button" class="btn btn-primary" (click) = "seeBL()"  > Voir </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        </div>
+    </span>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+</div>

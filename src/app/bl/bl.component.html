@@ -1,0 +1,28 @@
+<header>
+    <h1>IBM</h1>
+    <div class="gauche">Informatique Bureautique Moderne</div>
+    <div class="droite"> الإعلامية و الإدارية الحديثة </div>
+  </header>
+  <h2 style="text-align: center;">BON DE LIVRAISON N° {{fullNumBL}} </h2>
+  <div class="container"  >
+ 
+    <div class="mydate" > Date : {{mydate}}</div>
+    <div style="padding-bottom: 0.5cm;" >
+   Client : {{client}}<br>
+   Bon de Commande : {{NC}}<br>
+   
+ </div>
+
+ <table>
+
+<tr>
+  <th> N° </th>
+  <th> DESIGNATION </th>
+  <th> QTE </th >
+</tr>
+<tr *ngFor="let a of Articles ; index as i " >
+  <td>{{i+1}}</td>
+  <td> {{a.LibA}} </td>
+  <td> {{a.Qte}} </td>
+</tr>
+ </table>

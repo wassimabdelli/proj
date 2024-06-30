@@ -1,0 +1,73 @@
+<app-navbar [email]="email"></app-navbar>
+<div class="container">
+    <h1> Ajouter un Chéque : <h6> afficher le formulaire d'ajout ? <br> 
+        <input type="radio" id="oui" name="reponse" value="oui" [(ngModel)]="selectedValue">
+        <label for="oui">Oui</label><br>
+      
+        <input type="radio" id="non" name="reponse" value="non" [(ngModel)]="selectedValue">
+        <label for="non">Non</label> </h6>  </h1>
+        <div *ngIf="selectedValue === 'oui'">
+    <form  #chequeForm="ngForm">
+        <div class="form-group">
+
+            <label for="task">N° Cheque :</label>
+            <input type="text" class="form-control"  id="NCH" placeholder="Numero Cheque"  name="NCH"  [(ngModel)] = "NCH">
+            <br>
+
+            <label for="task">Designation : </label>
+            <input type="text" class="form-control"  id="des" placeholder="Designation"  name="des"  [(ngModel)] = "des">
+            <br>
+
+            <label for="task">Date : </label>
+            <input type="date" class="form-control"  id="dateCH" name="dateCH"  [(ngModel)] = "dateCH">
+            <br>
+
+            <label for="task">Montant : </label>
+            <input type="number" class="form-control"  id="M" placeholder="Montant" name="M"  [(ngModel)] = "M">
+            <br>
+
+            <label for="task">N° Facture : </label>
+            <input type="text" class="form-control"  id="NF" placeholder="Numero facture" name="NF"  [(ngModel)] = "NF">
+            <br>
+
+
+            <button [disabled]="chequeForm.invalid" (click)="addCheque()" id="submitButton" type="submit" class="btn btn-primary">Ajouter le Cheque</button>
+        </div>
+    </form>
+    </div> 
+
+    <h2>Etats des cheques :</h2>
+    Filtrage : <select [(ngModel)]="selectedF" (change)="Filtrer()">
+        <option *ngFor="let month of F" value="{{month}}">{{month}}</option>
+      </select>
+     <table >
+        <thead>
+            <tr>
+                <td> N° Cheque </td>
+                <td> Designation </td>
+                <td> Date </td>
+                <td> Montant </td>
+                <td> N° Facture </td>
+                <td> Verssement </td>
+                <td> Changer le verssement </td>
+                <td> Modifier </td>
+                <td> Supprimer </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="cheques?.length === 0">
+                <td colspan="9" class="exception" > <p> pas de donneés </p></td> </tr>
+            <tr *ngFor = "let f of cheques ; index as i" >
+                <td> {{f.NCH}} </td>
+                <td> {{f.Designation}} </td>
+                <td>{{f.dateCH.toDate() | date:('dd/MM/yyyy')}}</td>
+                <td> {{f.M}} </td>
+                <td> {{f.NF}} </td>
+                <td> {{ f.rq ? 'Oui' : 'Non' }} </td>
+                <td> <button class="btn btn-secondary" type="button" (click)="changer(f.NCH , f.rq)" >Changer</button> </td>
+                <td> <button class="btn btn-warning" (click)="update( f.NCH )" type="button">Update</button> </td>
+                <td> <button class="btn btn-danger" (click)="delete( f.NCH )">Delete</button> </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>

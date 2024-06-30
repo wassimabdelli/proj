@@ -1,0 +1,90 @@
+<app-navbar [email]="email"></app-navbar>
+<div class="container">
+
+<h1> Ajouter Frais : <h6> afficher le formulaire d'ajout ? <br> 
+    <input type="radio" id="oui" name="reponse" value="oui" [(ngModel)]="selectedValue">
+    <label for="oui">Oui</label><br>
+  
+    <input type="radio" id="non" name="reponse" value="non" [(ngModel)]="selectedValue">
+    <label for="non">Non</label> </h6>  </h1>
+
+    <div *ngIf="selectedValue === 'oui'">
+    <form  #chequeForm="ngForm">
+        <div class="form-group">
+
+            <label for="task">N° Facture : </label>
+            <input type="text" class="form-control"  id="NF" placeholder="Numero facture" name="NF"  [(ngModel)] = "NF">
+            <br>
+
+            <label for="task">Designation : </label>
+            <input type="text" class="form-control"  id="des" placeholder="Designation"  name="des"  [(ngModel)] = "des">
+            <br>
+
+            <label for="task">Date : </label>
+            <input type="date" class="form-control"  id="dateCH" name="dateCH"  [(ngModel)] = "date">
+            <br>
+
+            <label for="task">Montant : </label>
+            <input type="number" class="form-control"  id="M" placeholder="Montant" name="M"  [(ngModel)] = "TTC">
+            <br>
+
+
+            <button [disabled]="chequeForm.invalid" (click)="addFrais()" id="submitButton" type="submit" class="btn btn-primary">Ajouter le Cheque</button>
+        </div>
+    </form>
+    </div> 
+
+    <h2>Tableau des Frais :</h2>
+    Filtrage : <select [(ngModel)]="selectedF" (change)="filtrer()">
+        <option *ngFor="let f of F" value="{{f}}" >{{f}}</option>
+      </select> <br> <br>
+      Année : <select [(ngModel)]="selectedYear" (change)="filtrer()" >
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select><br> <br>
+     Mois : <select [(ngModel)]="selectedMonth" (change)="filtrer()" >
+        <option *ngFor="let month of months" value="{{month}}">{{month}}</option>
+      </select>
+    <br>
+    <hr>
+    <table >
+        <thead>
+            <tr>
+                <td colspan="6" align="center">
+                  <ng-container *ngIf="selectedF === 'Par Mois'">
+                    Frais {{selectedMonth}} {{selectedYear}}
+                  </ng-container>
+                  <ng-container *ngIf="selectedF === 'Toutes l\'année'">
+                    Les Frais de toutes L'année {{selectedYear}}
+                  </ng-container>
+                </td>
+              </tr>
+            <tr>
+                <td> N° Facture </td>
+                <td> Designation </td>
+                <td> Date </td>
+                <td> Montant </td>
+                <td> Modifier </td>
+                <td> Supprimer </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="frais?.length === 0">
+                <td colspan="6" class="exception" > <p> pas de donneés </p></td> </tr>
+            <tr *ngFor = "let f of frais ; index as i" >
+                <td> {{f.NF}} </td>
+                <td> {{f.Designation}} </td>
+                <td>{{f.date.toDate() | date:('dd/MM/yyyy')}}</td>
+                <td> {{f.M}} </td>
+                <td> <button class="btn btn-warning" type="button">Update</button> </td>
+                <td> <button class="btn btn-danger" >Delete</button> </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center" > Totale des Frais </td>
+                <td> {{ sumArray(Totale) }} </td>
+                <td colspan="2" style="background-color: black;" >  </td>
+            </tr>
+        </tbody>
+    </table>
+<br>
+
+</div>
