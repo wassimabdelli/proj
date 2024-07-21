@@ -45,20 +45,20 @@
         </form>
         </div> 
         <h2> Achats </h2>
-        Filtrage : <select [(ngModel)]="selectedF" >
+        Filtrage : <select [(ngModel)]="selectedF"(change)="filtrer()" >
             <option *ngFor="let f of F" value="{{f}}" >{{f}}</option>
           </select> <br> <br>
-          Année : <select [(ngModel)]="selectedYear" >
+          Année : <select [(ngModel)]="selectedYear"(change)="filtrer()" >
             <option *ngFor="let year of years" [value]="year">{{ year }}</option>
           </select><br> <br>
-         Mois : <select [(ngModel)]="selectedMonth" >
+         Mois : <select [(ngModel)]="selectedMonth"(change)="filtrer()" >
             <option *ngFor="let month of months" value="{{month}}">{{month}}</option>
           </select>
         <br>
         <table >
             <thead>
                 <tr>
-                    <td colspan="8" align="center">
+                    <td colspan="9" align="center">
                       <ng-container *ngIf="selectedF === 'Par Mois'">
                         Frais {{selectedMonth}} {{selectedYear}}
                       </ng-container>
@@ -79,12 +79,12 @@
                     <td> Supprimer </td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody> 
                 <tr *ngIf="Achats?.length === 0">
-                    <td colspan="6" class="exception" > <p> pas de donneés </p></td> </tr>
+                    <td colspan="9" class="exception" > <p> pas de donneés </p></td> </tr>
                 <tr *ngFor = "let f of Achats ; index as i" >
                     <td> {{f.NF}} </td>
-                    <td> {{f.Designation}} </td>
+                    <td> {{f.client}} </td>
                     <td>{{f.date.toDate() | date:('dd/MM/yyyy')}}</td>
                     <td> {{f.PTHT}} </td>
                     <td> {{f.TVA}} </td>

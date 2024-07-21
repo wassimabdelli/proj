@@ -58,4 +58,17 @@ addAchat()
   }
 
 }
+filtrer()
+{
+  if ( this.selectedF ==='Toutes l\'année' )
+    {
+      this.Aservice.DocsId().subscribe(snapshots => {
+        this.Achats = snapshots.map(snapshot => snapshot.payload.doc.data());
+    }); 
+    }else{
+    this.Achats = this.Aservice.getAchats( this.selectedYear,this.selectedMonth , this.Achats );
+   // this.Aservice.somme(this.selectedYear , this.selectedMonth ,  this.Totale )
+} ; 
+  
+}
 }
