@@ -126,10 +126,12 @@ THT :number = 0 ;
       const date = new Date();
       const annee = date.getFullYear();
       const collection = annee;
-      this.allS.deleteC(a,"Article")
+      //this.allS.deleteC(a,"Article")
       this.allS.deleteC(a,"ArticleBL")
       this.allS.deleteC(a,"BL"+annee)
       this.allS.deleteC(a,"FactA"+collection);
+      this.allS.deleteC(a,"EtatNR");
+      this.allS.deleteC(a,"Ventes"+collection);
       alert("La facture est Bien Supprimé , ainsi que le BL")
     }else{
       alert('Vous ne pouvez pas supprimer cette facture, car ce n\'est pas la dernière')
